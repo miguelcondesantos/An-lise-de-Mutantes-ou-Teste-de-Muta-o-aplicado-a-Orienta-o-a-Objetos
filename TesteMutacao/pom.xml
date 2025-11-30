@@ -42,39 +42,42 @@
         <version>3.0.0-M5</version>
       </plugin>
 
-      <!-- PIT Mutation Testing -->
       <plugin>
-        <groupId>org.pitest</groupId>
-        <artifactId>pitest-maven</artifactId>
-        <version>1.15.0</version>
-
-        <configuration>
-
-          <!-- CLASSES A SEREM MUTADAS -->
-          <targetClasses>
-            <param>com.teste_mutacao.*</param>
-          </targetClasses>
-
-          <!-- TESTES QUE SERÃO EXECUTADOS -->
-          <targetTests>
-            <param>com.teste_mutacao.*</param>
-          </targetTests>
-
-          <!-- MUTADORES PADRÃO -->
-          <mutators>
-            <mutator>DEFAULTS</mutator>
-          </mutators>
-
-          <!-- GERAR RELATÓRIO EM HTML -->
-          <outputFormats>
-            <param>HTML</param>
-          </outputFormats>
-
-          <!-- EXECUÇÃO EM PARALELO -->
-          <threads>4</threads>
-
-        </configuration>
-      </plugin>
+		  <groupId>org.pitest</groupId>
+		  <artifactId>pitest-maven</artifactId>
+		  <version>1.15.0</version>
+		
+		  <configuration>
+		
+		    <!-- CLASSES A SEREM MUTADAS -->
+		    <targetClasses>
+		      <param>com.teste_mutacao.*</param>
+		    </targetClasses>
+		
+		    <!-- TESTES QUE SERÃO EXECUTADOS -->
+		    <targetTests>
+		      <param>com.teste_mutacao.*</param>
+		    </targetTests>
+		
+		    <!-- MUTADORES PADRÃO -->
+		    <mutators>
+		      <mutator>DEFAULTS</mutator>
+		    </mutators>
+		
+		    <!-- FORMATOS DO RELATÓRIO -->
+		    <outputFormats>
+		      <param>HTML</param>
+		      <param>XML</param>
+		    </outputFormats>
+		
+		    <!-- MOSTRAR RESUMO NO CONSOLE -->
+		    <verbose>true</verbose>
+		
+		    <!-- EXECUÇÃO EM PARALELO -->
+		    <threads>4</threads>
+		
+		  </configuration>
+		</plugin>
 
     </plugins>
   </build>
