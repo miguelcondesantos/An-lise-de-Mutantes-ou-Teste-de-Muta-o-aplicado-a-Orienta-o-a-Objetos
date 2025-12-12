@@ -20,11 +20,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
-    </dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter</artifactId>
+	    <version>5.10.2</version>
+	    <scope>test</scope>
+	</dependency>
+
     <dependency>
     	<groupId>com.exercicios</groupId>
     	<artifactId>tdd</artifactId>
@@ -34,49 +35,51 @@
 
   <build>
     <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			 <artifactId>maven-surefire-plugin</artifactId>
+			 <version>3.1.2</version>
+			 <configuration>
+			 	<useModulePath>false</useModulePath>
+			 </configuration>
+		</plugin>
 
-      <!-- Surefire para rodar testes JUnit4-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
-      </plugin>
-
-      <plugin>
-		  <groupId>org.pitest</groupId>
-		  <artifactId>pitest-maven</artifactId>
-		  <version>1.15.0</version>
+		<plugin>
+		    <groupId>org.pitest</groupId>
+		    <artifactId>pitest-maven</artifactId>
+		    <version>1.15.0</version>
 		
-		  <configuration>
+		    <dependencies>
+		        <dependency>
+		            <groupId>org.pitest</groupId>
+		            <artifactId>pitest-junit5-plugin</artifactId>
+		            <version>1.0.0</version>
+		        </dependency>
+		    </dependencies>
 		
-		    <!-- CLASSES A SEREM MUTADAS -->
-		    <targetClasses>
-		      <param>com.teste_mutacao.*</param>
-		    </targetClasses>
+		    <configuration>
 		
-		    <!-- TESTES QUE SERÃO EXECUTADOS -->
-		    <targetTests>
-		      <param>com.teste_mutacao.*</param>
-		    </targetTests>
+		        <targetClasses>
+		            <param>com.teste_mutacao.*</param>
+		        </targetClasses>
 		
-		    <!-- MUTADORES PADRÃO -->
-		    <mutators>
-		      <mutator>DEFAULTS</mutator>
-		    </mutators>
+		        <targetTests>
+		            <param>com.teste_mutacao.*</param>
+		        </targetTests>
 		
-		    <!-- FORMATOS DO RELATÓRIO -->
-		    <outputFormats>
-		      <param>HTML</param>
-		      <param>XML</param>
-		    </outputFormats>
+		        <mutators>
+		            <mutator>DEFAULTS</mutator>
+		        </mutators>
 		
-		    <!-- MOSTRAR RESUMO NO CONSOLE -->
-		    <verbose>true</verbose>
+		        <outputFormats>
+		            <param>HTML</param>
+		            <param>XML</param>
+		        </outputFormats>
 		
-		    <!-- EXECUÇÃO EM PARALELO -->
-		    <threads>4</threads>
+		        <threads>4</threads>
+		        <verbose>true</verbose>
 		
-		  </configuration>
+		    </configuration>
 		</plugin>
 
     </plugins>

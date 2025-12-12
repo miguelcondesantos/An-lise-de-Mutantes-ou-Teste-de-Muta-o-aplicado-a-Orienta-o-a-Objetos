@@ -17,4 +17,5 @@ public class Calculadora {
 	public boolean isMaior(double a, double b) {
 		return a > b;
 	}
+	
 }
